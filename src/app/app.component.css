@@ -1,0 +1,44 @@
+/* div{
+    display: block;
+}
+
+
+.rightSide{
+    float: right;
+    width: 50%;
+    padding: 20px;
+}
+
+.leftSide{
+    float: left;
+    width: 50%;
+    padding: 20px;
+} */
+
+div {
+    overflow: hidden;
+  }
+  
+  .leftSide {
+    float: left;
+    width: 50%;
+    padding: 20px;
+  }
+  
+  .rightSide {
+    float: right;
+    width: 50%;
+    padding: 20px;
+  }
+  
+  app-travel-summary {
+    clear: left; 
+    display: block;
+    width: 50%; 
+  }
+
+
+  
+
+  
+  

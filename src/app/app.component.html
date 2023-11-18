@@ -1,0 +1,42 @@
+<app-header-component></app-header-component>
+
+<div class="leftSide">  <!-- ENTRY USER DATA -->
+  <h2 class="mb-4 text-center">Dades de la reserva</h2>
+  <div class="mb-3">
+    <label class="form-label">Nom</label>
+    <input type="text" class="form-control" id="idName" [(ngModel)]="name" [disabled]="!interaction">
+  </div>
+  <div class="mb-3">
+    <label class="form-label">Cognoms</label>
+    <input type="text" class="form-control" id="idSurname" [(ngModel)]="surname" [disabled]="!interaction">
+  </div>
+  <div class="mb-3">
+    <label class="form-label">DNI</label>
+    <input type="text" class="form-control" id="idDni" [(ngModel)]="dni" [disabled]="!interaction">
+  </div>
+  <div class="mb-3">
+    <label class="form-label">Data de naixement</label>
+    <input type="date" class="form-control" id="idBithday" [(ngModel)]="birthday" [disabled]="!interaction">
+  </div>
+
+  <div class="mb-3" *ngIf="!bookedValue">
+    <label class="form-label">Selecció de destinació</label>
+    <select class="form-select" id="idDestinations" [(ngModel)]="selectedDestination" [disabled]="!interaction" required>
+      <option value="" disabled selected style="display: none;">Esculli una destinació</option>
+      <option value="París">{{destinations[0].name}}</option>
+      <option value="Viena">{{destinations[1].name}}</option>
+    </select>
+  </div>
+
+  <div *ngIf="bookedValue">
+    <div class="p-1 mb-2 bg-success text-white">Reserva per a {{bookedSeats}} persones a {{selectedDestination}}</div>
+    <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+      <button class="btn btn-success me-md-1" (click)="createJSON()">Aceptar</button>
+      <button class="btn btn-danger" (click)="cancelBooking()">Cancel·lar</button>
+    </div>
+  </div>
+</div>
+
+<!-- DESTINATION RIGHT SIDE -->
+<app-travel-selector class="rightSide" [bookedFlights]="bookedFlights" [destinations]="destinations" [selectedDestination]="selectedDestination" (eventBookSeats)="changeState($event)"></app-travel-selector>
+<app-travel-summary class="leftSide" [destinations]="destinations" [bookedFlights]="bookedFlights" (canInteract)="canInteract($event)"></app-travel-summary>

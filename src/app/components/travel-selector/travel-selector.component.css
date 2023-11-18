@@ -1,0 +1,12 @@
+.image-container {
+    max-width: 700px;
+    max-height: 370px;
+    margin: 0 auto;
+    overflow: hidden;
+    image-rendering: optimizeQuality;
+  }
+
+  .igualar-imagen {
+    width: 100%;
+    height: auto;
+  }

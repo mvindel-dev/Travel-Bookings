@@ -1,0 +1,72 @@
+<h2 class="mb-4 text-center">Resum de les reserves</h2>
+
+<div class="d-grid gap-2">
+  <button type="submit" class="btn btn-outline-dark" *ngIf="!viewing" (click)="changeRender()">Veure el resum de les reserves</button>  <!-- SHOW BOOKINGS -->
+</div>
+
+<div class="d-grid gap-2">  
+  <button type="submit" class="btn btn-outline-dark" *ngIf="viewing" (click)="changeRender()">Tancar el resum de les reserves</button>  <!-- CLOSE BOOKINGS -->
+</div>  
+
+<div *ngIf="viewing">
+  <div *ngFor="let destination of destinations">
+    <!-- PARIS -->
+    <div class="container mt-3 border border-dark" *ngIf="destination.name === 'París'">
+      <div class="row bg-success text-white">
+        <div class="col-12">
+          <h2 class="mt-2">{{destination.name}}</h2>
+        </div>
+      </div>
+      <div class="row bg-success text-white">
+        <div class="col-4">
+          <h6 class="text-left">Plaçes totals: 60</h6>
+        </div>
+        <div class="col-4">
+          <h6 class="text-center">Plaçes venudes: {{getTotalBookedSeats(destination)}}</h6>
+        </div>
+        <div class="col-4">
+          <h6 class="text-end">Plaçes disponibles: {{60 - getTotalBookedSeats(destination)}}</h6>
+        </div>
+      </div>
+      <div class="row mt-3">
+        <div class="col-12 px-0">
+          <h4 class="mx-2">Reserves</h4>
+          <ul class="list-group">
+            <li class="list-group-item" *ngFor="let book of getBookedFlights(destination)">
+              {{book.surname}}, {{book.name}} ({{book.birthday}} - {{book.dni}}) - Viatjers: {{book.bookedSeats}}
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <!-- VIENA -->
+    <div class="container mt-3 border border-dark" *ngIf="destination.name === 'Viena'">
+        <div class="row bg-success text-white">
+          <div class="col-12">
+            <h2 class="mt-2">{{destination.name}}</h2>
+          </div>
+        </div>
+        <div class="row bg-success text-white">
+          <div class="col-4">
+            <h6 class="text-left">Plaçes totals: 60</h6>
+          </div>
+          <div class="col-4">
+            <h6 class="text-center">Plaçes venudes: {{getTotalBookedSeats(destination)}}</h6>
+          </div>
+          <div class="col-4">
+            <h6 class="text-end">Plaçes disponibles: {{60 - getTotalBookedSeats(destination)}}</h6>
+          </div>
+        </div>
+        <div class="row mt-3">
+          <div class="col-12 px-0">
+            <h4 class="mx-2">Reserves</h4>
+            <ul class="list-group">
+              <li class="list-group-item" *ngFor="let book of getBookedFlights(destination)">
+                {{book.surname}}, {{book.name}} ({{book.birthday}} - {{book.dni}}) - Viatjers: {{book.bookedSeats}}
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+</div>

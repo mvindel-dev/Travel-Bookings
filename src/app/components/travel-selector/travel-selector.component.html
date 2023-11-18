@@ -1,0 +1,83 @@
+<h2 class="mb-4 text-center">Destinació</h2>
+
+<div class="container mt-5">
+    <div class="border p-4 shadow" *ngIf="selectedDestination=='París'">
+
+      <h4 class="text-center">{{destinations[0].name}}</h4> <!-- NAME DEST -->
+
+      <div class="image-container">   <!-- CAROUSEL IMG DEST -->
+        <div id="carouselExample" class="carousel slide">
+          <div class="carousel-inner">
+            <div class="carousel-item active">
+              <img src="{{destinations[0].img[0]}}" class="d-block w-100" alt="Imatge aerea de la Torre Eiffel i voltants" class="img-fluid mx-auto d-block igualar-imagen">
+            </div>
+            <div class="carousel-item">
+              <img src="{{destinations[0].img[1]}}" class="d-block w-100" alt="Els camps elisis i l'arc del triomf" class="img-fluid mx-auto d-block igualar-imagen">
+            </div>
+            <div class="carousel-item">
+              <img src="{{destinations[0].img[2]}}" class="d-block w-100" alt="El museu del Louvre" class="img-fluid mx-auto d-block igualar-imagen">
+            </div>
+          </div>
+          <button class="carousel-control-prev" type="button" data-bs-target="#carouselExample" data-bs-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Previous</span>
+          </button>
+          <button class="carousel-control-next" type="button" data-bs-target="#carouselExample" data-bs-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Next</span>
+          </button>
+        </div>
+      </div>
+
+      <p class="text-center mt-3">{{destinations[0].description}}</p>   <!-- DESCRIPTION DEST -->
+      <div *ngIf="(60-getTotalBookedSeats(destinations[0]))>0" class="p-3 mb-2 bg-success text-white">Places disponibles: {{60-getTotalBookedSeats(destinations[0])}}</div>
+      <div class="mb-3">  <!-- Nº SEATS BOOKED -->
+        <label for="formGroupExampleInput" class="form-label">Reserva de places</label>
+        <input type="number" class="form-control" id="idBook" min="1" value="0" #seatsBooked>  <!-- #seatsBooked it's like a reference to the inputed value so u can treat it in a function -->
+      </div>
+      <div class="d-grid gap-2">  <!-- BUTTON RESERVE -->
+        <button type="submit" class="btn btn-outline-dark" (click)="bookSeats(seatsBooked.valueAsNumber)">Reservar</button>       
+      </div>
+    </div>
+  
+    <div class="border p-4 shadow" *ngIf="selectedDestination=='Viena'">
+      <h4 class="text-center">{{destinations[1].name}}</h4>
+
+      <div class="image-container">
+        <div id="carouselExample" class="carousel slide">
+          <div class="carousel-inner">
+            <div class="carousel-item active">
+              <img src="{{destinations[1].img[0]}}" class="d-block w-100" alt="Vista aerea Viena" class="img-fluid mx-auto d-block igualar-imagen">
+            </div>
+            <div class="carousel-item">
+              <img src="{{destinations[1].img[1]}}" class="d-block w-100" alt="El palau imperial (Hofburg)" class="img-fluid mx-auto d-block igualar-imagen">
+            </div>
+            <div class="carousel-item">
+              <img src="{{destinations[1].img[2]}}" class="d-block w-100" alt="El palau Belvedere" class="img-fluid mx-auto d-block igualar-imagen">
+            </div>
+          </div>
+          <button class="carousel-control-prev" type="button" data-bs-target="#carouselExample" data-bs-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Previous</span>
+          </button>
+          <button class="carousel-control-next" type="button" data-bs-target="#carouselExample" data-bs-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Next</span>
+          </button>
+        </div>
+      </div>
+
+      <p class="text-center mt-3">{{destinations[1].description}}</p>
+      <div *ngIf="(60-getTotalBookedSeats(destinations[1]))>0" class="p-3 mb-2 bg-success text-white">Places disponibles: {{60-getTotalBookedSeats(destinations[1])}}</div>
+      <div class="mb-3">
+        <label for="formGroupExampleInput" class="form-label">Reserva de places</label>
+        <input type="number" class="form-control" id="idBook" min="1" value="0" #seatsBooked>
+      </div>
+      <div class="d-grid gap-2">
+        <button type="submit" class="btn btn-outline-dark" (click)="bookSeats(seatsBooked.valueAsNumber)">Reservar</button>       
+      </div>
+    </div>
+  </div>
+
+  
+  
